@@ -13,9 +13,14 @@ environment:
     - CMAKE_PLATFORM: "Visual Studio 14 2015 Win64"
 install:
   - cinstall: python
-build_script:
+  - echo Installing eigen...
+  - appveyor-retry appveyor DownloadFile http://bitbucket.org/eigen/eigen/get/3.3.1.tar.gz
+  - 7z x 3.3.1.tar.gz -oc:\projects > nul
+  - cd c:\projects\eigen-eigen-f562a193118d
+  - cmake -G "%CMAKE_PLATFORM%" -DCMAKE_INSTALL_PREFIX=c:\Libraries\eigen -DCMAKE_BUILD_TYPE=%Configuration% .
+  - cmake --build . --config %CMAKE_CONFIG% --target install
   - echo Running cmake...
   - cd c:\projects\libcmaes
-  - cmake -G "%CMAKE_PLATFORM%" .
+  - cmake -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=%Configuration% .
   - cmake --build . --config %Configuration%
   - ctest -C %Configuration%
