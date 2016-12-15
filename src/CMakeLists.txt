@@ -11,7 +11,8 @@ bipopcmastrategy.cc
 cmasolutions.cc
 cmastrategy.cc
 errstats.cc
-ipopcmastrategy.cc surrogatestrategy.cc)
+ipopcmastrategy.cc
+surrogatestrategy.cc)
 
 set (LIBCMAES_HEADERS
 acovarianceupdate.h  cmastopcriteria.h   errstats.h         noboundstrategy.h     surrcmaes.h
@@ -28,6 +29,7 @@ add_library (cmaes ${LIBCMAES_SOURCES})
 
 set_target_properties (cmaes PROPERTIES SOVERSION 0)
 set_target_properties (cmaes PROPERTIES VERSION 0.0.0)
+set_target_properties (cmaes PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 install ( TARGETS cmaes
           EXPORT  LibcmaesLibraryDepends

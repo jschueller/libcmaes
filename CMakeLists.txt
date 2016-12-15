@@ -9,7 +9,7 @@ project (libcmaes)
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 
-option (BUILD_SHARED_LIBS "Build LIBCMAES as a shared library" ON)
+option (BUILD_SHARED_LIBS "Build libcmaes as a shared library" ON)
 option (BUILD_PYTHON "build python bindings" ON)
 option (BUILD_TESTS "build tests" ON)
 option (BUILD_EXAMPLES "build examples" ON)
@@ -126,8 +126,12 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR})
 enable_testing ()
 
 add_subdirectory (src)
-add_subdirectory (examples)
-add_subdirectory (tests)
+if (BUILD_EXAMPLES)
+  add_subdirectory (examples)
+endif ()
+if (BUILD_TESTS)
+  add_subdirectory (tests)
+endif ()
 
 if (Boost_FOUND AND NUMPY_FOUND)
   add_subdirectory (python)

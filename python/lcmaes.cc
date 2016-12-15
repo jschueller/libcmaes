@@ -224,12 +224,18 @@ BOOST_PYTHON_FUNCTION_OVERLOADS(make_parameters_default_pwqb,make_parameters<Gen
 //BOOST_PYTHON_FUNCTION_OVERLOADS(make_parameters_default_ls,make_parameters<GenoPheno<NoBoundStrategy,linScalingStrategy>>,3,5) // prevented by bug in Boost Python
 //BOOST_PYTHON_FUNCTION_OVERLOADS(make_parameters_default_pwb_ls,make_parameters<GenoPheno<pwqBoundStrategy,linScalingStrategy>>,3,5)
 
+
+inline int init_numpy()
+{
+  import_array();
+}
+
 BOOST_PYTHON_MODULE(lcmaes)
 {
   // disables C++ signatures in the Python module documentation
   docstring_options local_docstring_options(true,true,false);
 
-  import_array(); // numpy.
+  init_numpy(); // numpy.
   
   /*- parameters object and maker -*/
   class_<CMAParameters<GenoPheno<NoBoundStrategy>>>("CMAParametersNB","CMAParameters object for problems with unbounded function parameters")
