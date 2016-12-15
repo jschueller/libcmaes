@@ -21,8 +21,7 @@ install:
   - cd build
   - cmake -G "%CMAKE_PLATFORM%" -DCMAKE_INSTALL_PREFIX=c:\Libraries\eigen -DCMAKE_BUILD_TYPE=%Configuration% ..
   - cmake --build . --config %CMAKE_CONFIG% --target install
-  - echo Running cmake...
   - cd c:\projects\libcmaes
-  - cmake -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=%Configuration% -DEigen3_DIR=c:\Libraries\eigen\share\eigen3 .
+  - cmake -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=%Configuration% -DEigen3_DIR=c:\Libraries\eigen\share\eigen3\cmake .
   - cmake --build . --config %Configuration%
   - ctest -C %Configuration%
