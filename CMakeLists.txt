@@ -11,6 +11,8 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 option (BUILD_SHARED_LIBS "Build LIBCMAES as a shared library" ON)
 option (BUILD_PYTHON "build python bindings" ON)
+option (BUILD_TESTS "build tests" ON)
+option (BUILD_EXAMPLES "build examples" ON)
 option (USE_OPENMP "Use OpenMP for multithreading" ON)
 
 # Offer the user the choice of overriding the installation directories
@@ -124,6 +126,8 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR})
 enable_testing ()
 
 add_subdirectory (src)
+add_subdirectory (examples)
+add_subdirectory (tests)
 
 if (Boost_FOUND AND NUMPY_FOUND)
   add_subdirectory (python)
