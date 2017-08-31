@@ -13,9 +13,9 @@ environment:
     - CMAKE_PLATFORM: "Visual Studio 14 2015 Win64"
 install:
   - cinstall: python
-  - appveyor-retry appveyor DownloadFile http://bitbucket.org/eigen/eigen/get/3.3.3.tar.gz
-  - 7z x 3.3.3.tar.gz -oc:\projects > nul
-  - 7z x c:\projects\3.3.3.tar -oc:\projects > nul
+  - appveyor-retry appveyor DownloadFile https://bitbucket.org/eigen/eigen/get/3.3.4.tar.gz
+  - 7z x 3.3.4.tar.gz -oc:\projects > nul
+  - 7z x c:\projects\3.3.4.tar -oc:\projects > nul
   - cd c:\projects\eigen-eigen-f562a193118d
   - mkdir build
   - cd build
